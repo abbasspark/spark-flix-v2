@@ -6,8 +6,8 @@ const EndPoints = {
     TOP_RATED_API_MOVIES: "/movie/top_rated",
     TOP_RATED_API_TVSHOWS: "/tv/top_rated",
 
-    UP_COMING_API_MOVIES: "/movie/upcoming",
-    UP_COMING_API_TVSHOWS: "/tv/upcoming",
+    NOW_PLAYING_API_MOVIES: "/movie/now_playing",
+    NOW_PLAYING_API_TVSHOWS: "/tv/on_the_air",
 
     GENRES_API_MOVIES: "/genre/movie/list",
 

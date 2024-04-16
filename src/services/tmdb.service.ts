@@ -6,8 +6,8 @@ const TmdbService = {
     popular: {
         movies: async (): Promise<Movie[]> => {
             try {
-                const response = await fetchData<{ result: Movie[] }>(EndPoints.POPULAR_API_MOVIES);
-                return response.result;
+                const response = await fetchData<{ results: Movie[] }>(EndPoints.POPULAR_API_MOVIES);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching popular movies:', error);
                 return [];
@@ -15,8 +15,8 @@ const TmdbService = {
         },
         tvshows: async (): Promise<TVShow[]> => {
             try {
-                const response = await fetchData<{ result: TVShow[] }>(EndPoints.POPULAR_API_TVSHOWS);
-                return response.result;
+                const response = await fetchData<{ results: TVShow[] }>(EndPoints.POPULAR_API_TVSHOWS);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching popular tv shows:', error);
                 return [];
@@ -26,8 +26,8 @@ const TmdbService = {
     trending: {
         movies: async (): Promise<Movie[]> => {
             try {
-                const response = await fetchData<{ result: Movie[] }>(EndPoints.TRENDING_API_MOVIES_TODAY);
-                return response.result;
+                const response = await fetchData<{ results: Movie[] }>(EndPoints.TRENDING_API_MOVIES_TODAY);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching trending movies today:', error);
                 return [];
@@ -35,8 +35,8 @@ const TmdbService = {
         },
         tvshows: async (): Promise<TVShow[]> => {
             try {
-                const response = await fetchData<{ result: TVShow[] }>(EndPoints.TRENDING_API_TVSHOWS_TODAY);
-                return response.result;
+                const response = await fetchData<{ results: TVShow[] }>(EndPoints.TRENDING_API_TVSHOWS_TODAY);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching trending tv shows today:', error);
                 return [];
@@ -46,8 +46,8 @@ const TmdbService = {
     topRated: {
         movies: async (): Promise<Movie[]> => {
             try {
-                const response = await fetchData<{ result: Movie[] }>(EndPoints.TOP_RATED_API_MOVIES);
-                return response.result;
+                const response = await fetchData<{ results: Movie[] }>(EndPoints.TOP_RATED_API_MOVIES);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching trending movies today:', error);
                 return [];
@@ -55,19 +55,19 @@ const TmdbService = {
         },
         tvshows: async (): Promise<TVShow[]> => {
             try {
-                const response = await fetchData<{ result: TVShow[] }>(EndPoints.TOP_RATED_API_TVSHOWS);
-                return response.result;
+                const response = await fetchData<{ results: TVShow[] }>(EndPoints.TOP_RATED_API_TVSHOWS);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching trending tv shows today:', error);
                 return [];
             }
         }
     },
-    upcoming: {
+    nowPlaying: {
         movies: async (): Promise<Movie[]> => {
             try {
-                const response = await fetchData<{ result: Movie[] }>(EndPoints.UP_COMING_API_MOVIES);
-                return response.result;
+                const response = await fetchData<{ results: Movie[] }>(EndPoints.NOW_PLAYING_API_MOVIES);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching trending movies today:', error);
                 return [];
@@ -75,8 +75,8 @@ const TmdbService = {
         },
         tvshows: async (): Promise<TVShow[]> => {
             try {
-                const response = await fetchData<{ result: TVShow[] }>(EndPoints.UP_COMING_API_TVSHOWS);
-                return response.result;
+                const response = await fetchData<{ results: TVShow[] }>(EndPoints.NOW_PLAYING_API_TVSHOWS);
+                return response.results;
             } catch (error) {
                 console.error('Error fetching trending tv shows today:', error);
                 return [];

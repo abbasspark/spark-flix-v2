@@ -27,7 +27,6 @@ const handleAxiosError = (error: AxiosError) => {
 export const fetchData = async <T>(path: string): Promise<T> => {
     try {
         const response: AxiosResponse<T> = await instance.get(path);
-        console.log("🚀 ~ fetchData ~ response:", response)
         return response.data;
     } catch (error: any) {
         handleAxiosError(error);
