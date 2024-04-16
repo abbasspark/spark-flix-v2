@@ -27,7 +27,7 @@ const TmdbService = {
         movies: async (): Promise<Movie[]> => {
             try {
                 const response = await fetchData<{ results: Movie[] }>(EndPoints.TRENDING_API_MOVIES_TODAY);
-                return response.results;
+                return response.results.slice(0, 16);
             } catch (error) {
                 console.error('Error fetching trending movies today:', error);
                 return [];
@@ -36,7 +36,7 @@ const TmdbService = {
         tvshows: async (): Promise<TVShow[]> => {
             try {
                 const response = await fetchData<{ results: TVShow[] }>(EndPoints.TRENDING_API_TVSHOWS_TODAY);
-                return response.results;
+                return response.results.slice(0, 16);
             } catch (error) {
                 console.error('Error fetching trending tv shows today:', error);
                 return [];
@@ -67,7 +67,7 @@ const TmdbService = {
         movies: async (): Promise<Movie[]> => {
             try {
                 const response = await fetchData<{ results: Movie[] }>(EndPoints.NOW_PLAYING_API_MOVIES);
-                return response.results;
+                return response.results.slice(0, 16);
             } catch (error) {
                 console.error('Error fetching trending movies today:', error);
                 return [];
@@ -76,7 +76,7 @@ const TmdbService = {
         tvshows: async (): Promise<TVShow[]> => {
             try {
                 const response = await fetchData<{ results: TVShow[] }>(EndPoints.NOW_PLAYING_API_TVSHOWS);
-                return response.results;
+                return response.results.slice(0, 16);
             } catch (error) {
                 console.error('Error fetching trending tv shows today:', error);
                 return [];

@@ -7,11 +7,23 @@ import { TmdbService } from './services/tmdb.service';
 import Header from './components/Header';
 
 function App() {
-  const { moviesGenresContext, tvGenresContext, swiperContext } = useContext(StateContext);
+  const {
+    moviesGenresContext,
+    tvGenresContext,
+    swiperContext,
+    recommendedMoviesContext,
+    recommendedTvShowsContext,
+    trendingMoviesContext,
+    trendingTvShowsContext
+  } = useContext(StateContext);
   const [loading, setLoading] = useState(true);
   const [moviesGenres, setMovieGenres] = moviesGenresContext;
   const [tvGenres, setTvGenres] = tvGenresContext;
-  const [swiper, setSwiper] = swiperContext;
+  const [, setSwiper] = swiperContext;
+  const [, setrRecommendedMovies] = recommendedMoviesContext;
+  const [, setRecommendedTvShows] = recommendedTvShowsContext;
+  const [, setTrendingMovies] = trendingMoviesContext;
+  const [, setTrendingTvShows] = trendingTvShowsContext;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,17 +31,27 @@ function App() {
         const [
           movieGenresData,
           tvShowGenresData,
-          nowPlayingMovies
+          nowPlayingMovies,
+          nowPlayingTvShows,
+          trendingMovies,
+          trendingTvShows,
         ] =
           await Promise.all([
             TmdbService.genre.movies(),
             TmdbService.genre.tvshows(),
             TmdbService.nowPlaying.movies(),
+            TmdbService.nowPlaying.tvshows(),
+            TmdbService.trending.movies(),
+            TmdbService.trending.tvshows(),
           ])
 
         setMovieGenres(movieGenresData);
         setTvGenres(tvShowGenresData);
         setSwiper(nowPlayingMovies)
+        setrRecommendedMovies(nowPlayingMovies)
+        setRecommendedTvShows(nowPlayingTvShows)
+        setTrendingMovies(trendingMovies)
+        setTrendingTvShows(trendingTvShows)
       } catch (error) {
         console.error('Error loading data:', error);
       } finally {
@@ -39,7 +61,16 @@ function App() {
 
     fetchData();
 
-  }, [setMovieGenres, setTvGenres, setSwiper, setLoading]);
+  }, [
+    setMovieGenres,
+    setTvGenres,
+    setSwiper,
+    setLoading,
+    setrRecommendedMovies,
+    setRecommendedTvShows,
+    setTrendingMovies,
+    setTrendingTvShows
+  ]);
 
   if (loading || moviesGenres.length === 0 || tvGenres.length === 0) {
     return <div>Loading...</div>;
