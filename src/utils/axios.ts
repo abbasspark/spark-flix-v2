@@ -24,9 +24,9 @@ const handleAxiosError = (error: AxiosError) => {
     console.error('Config:', error.config);
 }
 
-export const fetchData = async <T>(path: string): Promise<T> => {
+export const fetchData = async <T>(path: string, params?: any): Promise<T> => {
     try {
-        const response: AxiosResponse<T> = await instance.get(path);
+        const response: AxiosResponse<T> = await instance.get(path, { params });
         return response.data;
     } catch (error: any) {
         handleAxiosError(error);

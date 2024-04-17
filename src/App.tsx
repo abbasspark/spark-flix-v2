@@ -37,21 +37,21 @@ function App() {
           trendingTvShows,
         ] =
           await Promise.all([
-            TmdbService.genre.movies(),
-            TmdbService.genre.tvshows(),
+            TmdbService.genre.movies,
+            TmdbService.genre.tvshows,
             TmdbService.nowPlaying.movies(),
             TmdbService.nowPlaying.tvshows(),
-            TmdbService.trending.movies(),
-            TmdbService.trending.tvshows(),
+            TmdbService.trending.movies,
+            TmdbService.trending.tvshows,
           ])
 
-        setMovieGenres(movieGenresData);
-        setTvGenres(tvShowGenresData);
-        setSwiper(nowPlayingMovies)
-        setrRecommendedMovies(nowPlayingMovies)
-        setRecommendedTvShows(nowPlayingTvShows)
-        setTrendingMovies(trendingMovies)
-        setTrendingTvShows(trendingTvShows)
+        setMovieGenres(movieGenresData.genres);
+        setTvGenres(tvShowGenresData.genres);
+        setSwiper(nowPlayingMovies.results)
+        setrRecommendedMovies(nowPlayingMovies.results)
+        setRecommendedTvShows(nowPlayingTvShows.results)
+        setTrendingMovies(trendingMovies.results)
+        setTrendingTvShows(trendingTvShows.results)
       } catch (error) {
         console.error('Error loading data:', error);
       } finally {

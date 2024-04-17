@@ -10,6 +10,8 @@ interface StateContextType {
     recommendedTvShowsContext: [TVShow[], React.Dispatch<React.SetStateAction<TVShow[]>>];
     trendingMoviesContext: [Movie[], React.Dispatch<React.SetStateAction<Movie[]>>];
     trendingTvShowsContext: [TVShow[], React.Dispatch<React.SetStateAction<TVShow[]>>];
+    topRatedMoviesContext: [Movie[], React.Dispatch<React.SetStateAction<Movie[]>>];
+    topRatedTvShowsContext: [TVShow[], React.Dispatch<React.SetStateAction<TVShow[]>>];
 }
 
 export const StateContext = createContext<StateContextType>({
@@ -21,6 +23,8 @@ export const StateContext = createContext<StateContextType>({
     recommendedTvShowsContext: [[], () => {}],
     trendingMoviesContext: [[], () => {}],
     trendingTvShowsContext: [[], () => {}],
+    topRatedMoviesContext: [[], () => {}],
+    topRatedTvShowsContext: [[], () => {}],
 });
 
 export const StateContextProvider = ({ children }: { children: ReactNode }) => {
@@ -32,6 +36,8 @@ export const StateContextProvider = ({ children }: { children: ReactNode }) => {
     const [recommendedTvShows, setRecommendedTvShows] = useState<TVShow[]>([]);
     const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
     const [trendingTvShows, setTrendingTvShows] = useState<TVShow[]>([]);
+    const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
+    const [topRatedTvShows, setTopRatedTvShows] = useState<TVShow[]>([]);
 
     return (
         <StateContext.Provider
@@ -43,7 +49,9 @@ export const StateContextProvider = ({ children }: { children: ReactNode }) => {
                 recommendedMoviesContext: [recommendedMovies, setRecommendedMovies],
                 recommendedTvShowsContext: [recommendedTvShows, setRecommendedTvShows],
                 trendingMoviesContext: [trendingMovies, setTrendingMovies],
-                trendingTvShowsContext: [trendingTvShows, setTrendingTvShows]
+                trendingTvShowsContext: [trendingTvShows, setTrendingTvShows],
+                topRatedMoviesContext: [topRatedMovies, setTopRatedMovies],
+                topRatedTvShowsContext: [topRatedTvShows, setTopRatedTvShows],
             }}
         >
             {children}
