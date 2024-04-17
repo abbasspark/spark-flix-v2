@@ -6,7 +6,7 @@ import TvShowScroller from "../TvShowScroller";
 
 
 export default function Latest() {
-  const [nowPlayingMovies] = useContext(StateContext).trendingMoviesContext;
+  const [nowPlayingMovies] = useContext(StateContext).recommendedMoviesContext;
   const [populartv] = useContext(StateContext).recommendedTvShowsContext;
 
   return (

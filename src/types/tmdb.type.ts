@@ -38,10 +38,16 @@ interface Genre {
     id: number;
     name: string;
 }
+type ApiResponse<T, K extends string = 'results'> = {
+    [key in K]: T[];
+} & {
+    total_pages?: number;
+};
 
 export type {
     Movie,
     TVShow,
     Genre,
-    MultiMedia
+    MultiMedia,
+    ApiResponse
 }
