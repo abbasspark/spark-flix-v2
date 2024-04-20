@@ -26,6 +26,7 @@ export default function Latest() {
         </div>
         {populartv && <TvShowScroller data={populartv} category="latesttvshows" />}
       </section>
+      <div className="clearfix"></div>
     </div>
   )
 }

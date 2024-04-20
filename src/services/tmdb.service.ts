@@ -1,10 +1,11 @@
 import { Movie, TVShow, Genre, MultiMedia } from "../types/tmdb.type";
+import { fetchData } from "../utils/axios";
 import { EndPoints } from "../utils/endpoints";
 import { fetch } from "../utils/fetch";
-const sliceResults = (res: any) => {
+const sliceResults = (res: any, count = 16) => {
     return {
         ...res,
-        results: res.results.slice(0, 16)
+        results: res.results.slice(0, count)
     };
 };
 const TmdbService = {
@@ -54,13 +55,20 @@ const TmdbService = {
         try {
             let { type, id } = params;
             const url = `/discover/${type}?with_genres=${id}&page=${page}`;
-            return sliceResults(await fetch<MultiMedia>(url))
+            return sliceResults(await fetch<MultiMedia>(url), 20)
         } catch (error) {
             console.error('Error fetching search results:', error);
             return {
                 results: []
             };
         }
+    },
+    info: {
+        movie: {
+            detail: async (id: string) => fetchData<any>(EndPoints.MOVIE_INFO_API(id)),
+            similar: async (id: string) => fetch<Movie>(EndPoints.SIMILAR_MOVIE_API(id)).then(sliceResults),
+        },
+        tv: async (id: string) => fetchData<TVShow>(EndPoints.TV_INFO_API(id)),
     }
 }
 

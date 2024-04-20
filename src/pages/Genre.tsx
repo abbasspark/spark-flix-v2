@@ -18,7 +18,6 @@ export default function Genre() {
     const [genreName, setGenreName] = useState<string | undefined>("");
     useEffect(() => {
         function getGenre() {
-            console.log({ params });
             if (params.type === "tv") {
                 if (tvGenres.length > 0) {
                     let obj = tvGenres.find((x) => x.id.toString() === params.id);

@@ -12427,7 +12427,7 @@ header #user .logged i.fa-sort-down {
 
 #body {
   min-height: 100%;
-  padding-bottom: 290px;
+  /* padding-bottom: 290px; */
 }
 
 @media screen and (max-width: 992px) {

@@ -6,7 +6,8 @@ const MediaPlayer = () => {
     const params = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [url, setUrl] = useState<string>();
+    const [url, setUrl] = useState<string>('');
+    const [backgroundImage, setBackgroundImage] = useState<string>('');
 
     const handleLoad = () => {
         setIsLoading(false);
@@ -16,7 +17,14 @@ const MediaPlayer = () => {
         setError(true);
     };
     useEffect(() => {
-        return setUrl(`https://vidsrc.pro/embed/movie/${params.id}`);
+        const { id, type } = params
+        if (type === 'movie') {
+            setUrl(`https://vidsrc.pro/embed/${type}/${id}`);
+        }
+        if (type === 'tv') {
+            const { season, episode } = params;
+            setUrl(`https://vidsrc.pro/embed/${type}/${id}/${season}/${episode}`);
+        }
     }, [params]);
     return (
         <div id="player">
@@ -25,12 +33,11 @@ const MediaPlayer = () => {
             <iframe
                 className='iframe'
                 src={url}
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                 allowFullScreen
                 title='Embedded Video'
                 onLoad={handleLoad}
                 onError={handleError}
-
             />
         </div >
     );

@@ -14,7 +14,7 @@ export default function Routes() {
             <Route path="/topimdb" element={<List />} />
             <Route path="/upcoming" element={<List />} />
             <Route path="/genre/:type/:id" element={<Genre />} />
-            <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/:type/:id" element={<MovieDetails />} />
             <Route path="*" element={<NotFound />} />
         </Switch>
     );
