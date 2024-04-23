@@ -32,9 +32,9 @@ async function bootstrap() {
   const mode = configService.get('APP_ENV');
 
   const config = new DocumentBuilder()
-    .setTitle('Loon Dashboard')
-    .setDescription('Loon Export API V2')
-    .setVersion('1.0')
+    .setTitle('Spark Flix')
+    .setDescription('Spark Flix API V2')
+    .setVersion('2.0')
     .setExternalDoc('Postman Collection', '/docs-json')
     .build();
   const document = SwaggerModule.createDocument(app, config);
@@ -45,5 +45,6 @@ async function bootstrap() {
   Logger.log(mode, 'Mode');
 
   Logger.log(`http://127.0.0.1:${port}`, 'host');
+  Logger.log(`http://127.0.0.1:${port}/docs`, 'Swagger');
 }
 bootstrap();

@@ -19,11 +19,11 @@ const MediaPlayer = () => {
     useEffect(() => {
         const { id, type } = params
         if (type === 'movie') {
-            setUrl(`https://vidsrc.pro/embed/${type}/${id}`);
+            setUrl(`https://vidsrc.net/embed/${type}/${id}`);
         }
         if (type === 'tv') {
             const { season, episode } = params;
-            setUrl(`https://vidsrc.pro/embed/${type}/${id}/${season}/${episode}`);
+            setUrl(`https://vidsrc.net/embed/${type}/${id}/${season}/${episode}`);
         }
     }, [params]);
     return (
